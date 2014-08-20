@@ -1,7 +1,7 @@
 
 BasicGame.Game = function (game) {
 
-	//	When a State is added to Phaser it automatically has the following properties set on it, even if they already exist:
+    //	When a State is added to Phaser it automatically has the following properties set on it, even if they already exist:
 
     this.game;		//	a reference to the currently running game
     this.add;		//	used to add sprites, text, groups, etc
@@ -26,26 +26,34 @@ BasicGame.Game = function (game) {
 
 BasicGame.Game.prototype = {
 
-	create: function () {
+    create: function () {
 
-		//	Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
+        this.bg = this.add.graphics(0, 0);
 
-	},
+        this.bg.beginFill(0xCCEEFF, 1);
 
-	update: function () {
+        this.bg.drawRect(0, 0, this.world.width, this.world.height);
+        this.bg.endFill();
 
-		//	Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
 
-	},
+        this.add.sprite(360, 410, 'espada');
+        this.add.sprite(200, 660, 'roca');
+    },
 
-	quitGame: function (pointer) {
+    update: function () {
 
-		//	Here you should destroy anything you no longer need.
-		//	Stop music, delete sprites, purge caches, free resources, all that good stuff.
+        //	Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
 
-		//	Then let's go back to the main menu.
-		this.state.start('MainMenu');
+    },
 
-	}
+    quitGame: function (pointer) {
+
+        //	Here you should destroy anything you no longer need.
+        //	Stop music, delete sprites, purge caches, free resources, all that good stuff.
+
+        //	Then let's go back to the main menu.
+        this.state.start('MainMenu');
+
+    }
 
 };
