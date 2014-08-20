@@ -5,7 +5,7 @@ BasicGame.MainMenu = function (game) {
 	this.playButton = null;
     this.bg = null;
     this.clouds =null;
-    //var cloudsTimer=null;
+
     this.SPEED = 180;
     this.cloud=null;
 
@@ -31,15 +31,25 @@ BasicGame.MainMenu.prototype = {
 		//	Here all we're doing is playing some music and adding a picture and button
 		//	Naturally I expect you to do something significantly better :)
 
+        var d = new Date();
+        var n = d.getHours();
+
+
+
 
         this.bg = this.add.graphics(0, 0);
-        this.bg.beginFill(0xCCEEFF, 1);
+
+        if(n>20)
+            this.bg.beginFill(0x191970, 1);
+        else
+            this.bg.beginFill(0xCCEEFF, 1);
+
         this.bg.drawRect(0, 0, this.world.width, this.world.height);
         this.bg.endFill();
 
         var titulo = this.add.text(
             3 * this.world.width / 6,
-            this.world.height / 3,
+            this.world.height / 4,
             "",
             {
                 font: '30px "Press Start 2P"',
@@ -53,7 +63,19 @@ BasicGame.MainMenu.prototype = {
         titulo.anchor.setTo(0.5, 0.5);
         titulo.renderable = false;
 
-        this.playButton = this.add.button(this.world.centerX - 65, 500, 'playButton', this.startGame, this, 1,0,2);
+
+
+
+        var platforms = this.add.group();
+        var ground = platforms.create(0, this.world.height - 400, 'pasto');
+        ground.scale.setTo(2);
+
+        this.add.sprite(360, 410, 'espada');
+        this.add.sprite(200, 660, 'roca');
+
+
+
+        this.playButton = this.add.button(this.world.centerX - 65, 700, 'playButton', this.startGame, this, 1,0,2);
         this.clouds = this.add.group();
 
         //cloudsTimer = new Phaser.Timer(this.game);
@@ -61,7 +83,7 @@ BasicGame.MainMenu.prototype = {
 
 
         //cloudsTimer.start();
-        spawnCloud;
+        //spawnCloud(this);
         this.game.time.events.loop(Phaser.Timer.SECOND*4, spawnCloud, this);
         //cloudsTimer.add(Math.random());
 
@@ -69,7 +91,8 @@ BasicGame.MainMenu.prototype = {
             //console.log('hola');
             //cloudsTimer.stop();
 
-            var cloudY = Math.random() * this.game.height / 3;
+            var cloudY = (Math.random() * this.game.height / 3)-100; //-100 para dar mas altura
+            //console.log(cloudY);
             var cloud = this.clouds.create(
                 this.game.width,
                 cloudY,

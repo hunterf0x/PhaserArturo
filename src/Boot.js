@@ -43,13 +43,18 @@ BasicGame.Boot.prototype = {
         else
         {
             this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
-            this.scale.minWidth = 480;
+            /*this.scale.minWidth = 480;
             this.scale.minHeight = 260;
             this.scale.maxWidth = 1024;
-            this.scale.maxHeight = 768;
+            this.scale.maxHeight = 768;*/
+
+            this.scale.minWidth = 260;
+            this.scale.minHeight = 480;
+            this.scale.maxWidth = 768;
+            this.scale.maxHeight = 1024;
             this.scale.pageAlignHorizontally = true;
             this.scale.pageAlignVertically = true;
-            this.scale.forceOrientation(true, false);
+            this.scale.forceOrientation(false, true);  //forcelandscape,forceportrait
             this.scale.hasResized.add(this.gameResized, this);
             this.scale.enterIncorrectOrientation.add(this.enterIncorrectOrientation, this);
             this.scale.leaveIncorrectOrientation.add(this.leaveIncorrectOrientation, this);
