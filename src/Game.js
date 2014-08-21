@@ -1,4 +1,4 @@
-
+var  leftBtn,rightBtn;
 BasicGame.Game = function (game) {
 
     //	When a State is added to Phaser it automatically has the following properties set on it, even if they already exist:
@@ -18,6 +18,9 @@ BasicGame.Game = function (game) {
     this.particles;	//	the particle manager
     this.physics;	//	the physics manager
     this.rnd;		//	the repeatable random number generator
+    this.espada;
+
+
 
     //	You can use any of these from any function within this State.
     //	But do consider them as being 'reserved words', i.e. don't create a property for your own game called "world" or you'll over-write the world reference.
@@ -36,12 +39,27 @@ BasicGame.Game.prototype = {
         this.bg.endFill();
 
 
-        this.add.sprite(360, 410, 'espada');
-        this.add.sprite(200, 660, 'roca');
+        this.espada = this.add.sprite(325, 240, 'espada');
+        var roca = this.add.sprite(10, 750, 'roca');
+        roca.scale.setTo(2.0,2.0);
+        this.espada.scale.setTo(2.0,2.0);
+
+
+
+        leftBtn = this.add.sprite(232 - 112, 500, 'boton-flecha', 0);
+        //leftBtn.alpha = 0;
+        rightBtn = this.add.sprite(640 - 112, 500, 'boton-flecha', 1);
+        //rightBtn.alpha = 0;
+
+        leftBtn.inputEnabled = true;
+
+        //this.espada.input.enableDrag();
     },
 
     update: function () {
-
+        if(leftBtn.input.justOver()){
+            this.espada.body.rotateLeft(15);
+        }
         //	Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
 
     },
@@ -54,6 +72,10 @@ BasicGame.Game.prototype = {
         //	Then let's go back to the main menu.
         this.state.start('MainMenu');
 
+    },
+    render: function(){
+        this.game.debug.inputInfo(32, 32);
+        this.game.debug.spriteInputInfo(leftBtn, 300, 32);
     }
 
 };

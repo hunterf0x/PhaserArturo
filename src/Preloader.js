@@ -33,6 +33,7 @@ BasicGame.Preloader.prototype = {
         //this.load.tilemap('map', 'assets/tilemaps/pasto.csv', null, Phaser.Tilemap.CSV);
 
         this.load.image('espada', 'assets/scene/excalibur_mortal2.png');
+        this.load.spritesheet('boton-flecha', 'assets/buttons/arrow-button.png',112, 95);
 
 		/*this.load.audio('titleMusic', ['audio/main_menu.mp3']);
 		this.load.bitmapFont('caslon', 'fonts/caslon.png', 'fonts/caslon.xml');*/
