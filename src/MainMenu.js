@@ -39,7 +39,7 @@ BasicGame.MainMenu.prototype = {
 
         this.bg = this.add.graphics(0, 0);
 
-        if(n>20)
+        if(n<10)
             this.bg.beginFill(0x191970, 1);
         else
             this.bg.beginFill(0xCCEEFF, 1);
@@ -67,15 +67,15 @@ BasicGame.MainMenu.prototype = {
 
 
         var platforms = this.add.group();
-        var ground = platforms.create(0, this.world.height - 400, 'pasto');
-        ground.scale.setTo(2);
+        var ground = platforms.create(0, this.world.height - 512, 'pasto');
+        //ground.scale.setTo(2);
 
-        this.add.sprite(360, 410, 'espada');
-        this.add.sprite(200, 660, 'roca');
+        this.add.sprite(360, 480, 'espada');
+        this.add.sprite(200, 730, 'roca');
 
 
 
-        this.playButton = this.add.button(this.world.centerX - 65, 700, 'playButton', this.startGame, this, 1,0,2);
+        this.playButton = this.add.button(this.world.centerX - 65, 780, 'playButton', this.startGame, this, 1,0,2);
         this.clouds = this.add.group();
 
         //cloudsTimer = new Phaser.Timer(this.game);

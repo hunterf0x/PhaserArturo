@@ -29,7 +29,7 @@ BasicGame.Preloader.prototype = {
 		this.load.spritesheet('clouds', 'assets/scene/clouds.png', 128, 64);
         this.load.image('roca', 'assets/scene/rock.png');
 
-        this.load.image('pasto', 'assets/scene/pasto0.png');
+        this.load.image('pasto', 'assets/scene/pasto1.png');
         //this.load.tilemap('map', 'assets/tilemaps/pasto.csv', null, Phaser.Tilemap.CSV);
 
         this.load.image('espada', 'assets/scene/excalibur_mortal2.png');
