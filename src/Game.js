@@ -47,9 +47,9 @@ BasicGame.Game.prototype = {
 
 
         leftBtn = this.add.sprite(232 - 112, 500, 'boton-flecha', 0);
-        //leftBtn.alpha = 0;
+        leftBtn.alpha = 0;
         rightBtn = this.add.sprite(640 - 112, 500, 'boton-flecha', 1);
-        //rightBtn.alpha = 0;
+        rightBtn.alpha = 0;
 
         leftBtn.inputEnabled = true;
         rightBtn.inputEnabled = true;
@@ -59,12 +59,16 @@ BasicGame.Game.prototype = {
     },
 
     update: function () {
-        if(leftBtn.input.justOver()){
-            this.espada.rotation = 0.1;
+        if(leftBtn.input.pointerOver()){
+            this.espada.rotation = -0.01;
+            leftBtn.alpha = 0.5;
+            rightBtn.alpha = 0;
         }
 
-        if(rightBtn.input.justOver()){
-            this.espada.rotation = -0.1;
+        if(rightBtn.input.pointerOver()){
+            this.espada.rotation = 0.01;
+            rightBtn.alpha = 0.5;
+            leftBtn.alpha = 0;
         }
         //	Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
 
