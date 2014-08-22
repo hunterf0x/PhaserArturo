@@ -62,7 +62,7 @@ BasicGame.MainMenu.prototype = {
         titulo.setText("ARTURO\nY\nLA\nESPADA!");
         titulo.anchor.setTo(0.5, 0.5);
         titulo.renderable = false;
-        titulo.setShadow(5, 5, 'rgba(0,0,0,0.5)', 15);
+        //titulo.setShadow(5, 5, 'rgba(0,0,0,0.5)', 15);
 
 
 
