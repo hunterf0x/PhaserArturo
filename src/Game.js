@@ -39,7 +39,7 @@ BasicGame.Game.prototype = {
         this.bg.endFill();
 
 
-        this.espada = this.add.sprite(325, 240, 'espada');
+        this.espada = this.add.sprite(325, 950, 'espada');
         var roca = this.add.sprite(10, 750, 'roca');
         roca.scale.setTo(2.0,2.0);
         this.espada.scale.setTo(2.0,2.0);
@@ -52,13 +52,19 @@ BasicGame.Game.prototype = {
         //rightBtn.alpha = 0;
 
         leftBtn.inputEnabled = true;
+        rightBtn.inputEnabled = true;
+        this.espada.anchor.setTo(0,1,0,1);
 
         //this.espada.input.enableDrag();
     },
 
     update: function () {
         if(leftBtn.input.justOver()){
-            this.espada.body.rotateLeft(15);
+            this.espada.rotation = 0.1;
+        }
+
+        if(rightBtn.input.justOver()){
+            this.espada.rotation = -0.1;
         }
         //	Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
 
