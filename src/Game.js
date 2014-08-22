@@ -32,8 +32,6 @@ BasicGame.Game = function (game) {
 BasicGame.Game.prototype = {
 
     create: function () {
-
-
         /**
          * Background
          * @type {Phaser.Graphics}
@@ -42,7 +40,6 @@ BasicGame.Game.prototype = {
         this.bg.beginFill(0xCCEEFF, 1);
         this.bg.drawRect(0, 0, this.world.width, this.world.height);
         this.bg.endFill();
-
 
         /**
          * Espada
@@ -60,13 +57,12 @@ BasicGame.Game.prototype = {
         this.roca = this.add.sprite(10, 750, 'roca');
         this.roca.scale.setTo(2.0,2.0);
 
-
-        this.game.time.events.add(Phaser.Timer.SECOND * 2, showEscudo, this);
-        this.game.time.events.add(Phaser.Timer.SECOND * 3, showInstrucciones, this);
-        this.game.time.events.add(Phaser.Timer.SECOND * 5, showBoton, this);
-
-
-
+        /**
+         * Secuencia de sucesos
+         */
+        this.game.time.events.add(Phaser.Timer.SECOND * 1, showEscudo, this);
+        this.game.time.events.add(Phaser.Timer.SECOND * 2, showInstrucciones, this);
+        this.game.time.events.add(Phaser.Timer.SECOND * 3, showBoton, this);
 
 
         function showEscudo(){
@@ -76,25 +72,25 @@ BasicGame.Game.prototype = {
         }
 
         function showInstrucciones(){
-            var titulo = this.add.text(3 * this.world.width / 6,this.world.height / 3,"",{
+            this.intro = this.add.text(3 * this.world.width / 6,this.world.height / 3,"",{
                     font: '20px "Press Start 2P"',
                     fill: '#fff',
                     stroke: '#210',
                     strokeThickness: 8,
                     align: 'center'
                 });
-            titulo.setText("Retira la espada\nde la piedra\nsiguiendo las\nindicaciones\n\n\nEstas listo?");
-            titulo.anchor.setTo(0.5, 0.5);
-            titulo.renderable = false;
+            this.intro.setText("Retira la espada\nde la piedra\nsiguiendo las\nindicaciones\n\n\nEstas listo?");
+            this.intro.anchor.setTo(0.5, 0.5);
+            this.intro.renderable = false;
             //titulo.setShadow(5, 5, 'rgba(0,0,0,0.5)', 15);
         }
 
 
         function showBoton(){
-            var botonok = this.add.sprite(this.game.width/2 , 570, 'botonok');
-            botonok.anchor.setTo(0.5, 0.5);
-            botonok.alpha = 0;
-            this.game.add.tween(botonok).to( { alpha: 1 }, 1000, null, true);
+            this.botonok = this.add.sprite(this.game.width/2 , 570, 'botonok');
+            this.botonok.anchor.setTo(0.5, 0.5);
+            this.botonok.alpha = 0;
+            this.game.add.tween(this.botonok).to( { alpha: 1 }, 1000, null, true);
             this.game.input.onDown.add(this.startGame, this);
         }
 
@@ -155,7 +151,17 @@ BasicGame.Game.prototype = {
         this.game.debug.spriteInputInfo(leftBtn, 300, 32);
     },
     startGame: function(){
-        console.log('ahora si');
+        this.botonok.kill();
+        this.intro.destroy();
+        this.escudo.kill();
+        playing = true;
+        this.game.add.tween(leftBtn).to( { alpha: 1 }, 500, Phaser.Easing.Linear.None, true, 0, 2, false).onComplete.addOnce(otroBoton,this)
+
+        function otroBoton(){
+            this.game.add.tween(rightBtn).to( { alpha: 1 }, 500, Phaser.Easing.Linear.None, true, 0, 2, false)
+        }
+
+
     }
 
 };
