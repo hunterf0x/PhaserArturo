@@ -60,13 +60,13 @@ BasicGame.Game.prototype = {
 
     update: function () {
         if(leftBtn.input.pointerOver()){
-            this.espada.rotation = -0.01;
+            this.espada.rotation = -0.02;
             leftBtn.alpha = 0.5;
             rightBtn.alpha = 0;
         }
 
         if(rightBtn.input.pointerOver()){
-            this.espada.rotation = 0.01;
+            this.espada.rotation = 0.02;
             rightBtn.alpha = 0.5;
             leftBtn.alpha = 0;
         }

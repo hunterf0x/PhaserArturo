@@ -39,7 +39,7 @@ BasicGame.MainMenu.prototype = {
 
         this.bg = this.add.graphics(0, 0);
 
-        if(n<10)
+        if(n>10)
             this.bg.beginFill(0x191970, 1);
         else
             this.bg.beginFill(0xCCEEFF, 1);
