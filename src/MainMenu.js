@@ -39,7 +39,7 @@ BasicGame.MainMenu.prototype = {
 
         this.bg = this.add.graphics(0, 0);
 
-        if(n>10)
+        if(n>20)
             this.bg.beginFill(0x191970, 1);
         else
             this.bg.beginFill(0xCCEEFF, 1);
@@ -62,6 +62,7 @@ BasicGame.MainMenu.prototype = {
         titulo.setText("ARTURO\nY\nLA\nESPADA!");
         titulo.anchor.setTo(0.5, 0.5);
         titulo.renderable = false;
+        titulo.setShadow(3, 3, 'rgba(0,0,0,0.5)', 5);
 
 
 

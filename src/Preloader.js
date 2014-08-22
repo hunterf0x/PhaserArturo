@@ -26,6 +26,7 @@ BasicGame.Preloader.prototype = {
 		//	As this is just a Project Template I've not provided these assets, the lines below won't work as the files themselves will 404, they are just an example of use.
 		/*this.load.image('titlepage', 'images/title.jpg');*/
 		this.load.spritesheet('playButton', 'assets/buttons/button_play.png', 129, 60);
+		this.load.image('botonok', 'assets/buttons/button_ok.png');
 		this.load.spritesheet('clouds', 'assets/scene/clouds.png', 128, 64);
         this.load.image('roca', 'assets/scene/rock.png');
 
@@ -34,6 +35,8 @@ BasicGame.Preloader.prototype = {
 
         this.load.image('espada', 'assets/scene/excalibur_mortal2.png');
         this.load.spritesheet('boton-flecha', 'assets/buttons/arrow-button.png',112, 95);
+
+        this.load.image('escudo', 'assets/scene/escudo.png')
 
 		/*this.load.audio('titleMusic', ['audio/main_menu.mp3']);
 		this.load.bitmapFont('caslon', 'fonts/caslon.png', 'fonts/caslon.xml');*/
